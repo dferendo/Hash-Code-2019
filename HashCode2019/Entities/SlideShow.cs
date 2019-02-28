@@ -6,6 +6,6 @@ namespace HashCode2019.Entities
 {
     public class SlideShow
     {
-        List<Photo> Photos { get; set; }
+        public List<Photo> Photos { get; set; }
     }
 }
