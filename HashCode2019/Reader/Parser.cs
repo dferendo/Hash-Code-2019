@@ -8,25 +8,20 @@ namespace HashCode2019.Reader
 {
     public static class Parser
     {
-        public static Structure ParseAll(string firstLine, List<string> otherLines)
+        public static InputReading ParseAll(string firstLine, List<string> otherLines)
         {
-            Structure structure = new Structure();
-            List<int> seps = firstLine.Split(' ').Select(x => Int32.Parse(x)).ToList();
+            var input = new InputReading();
+            int numberOfPhotos = Int32.Parse(firstLine);
+            input.Photos = new List<Photo>();
 
-            //structure.MinIngredients = seps[2];
-            //structure.MaxIngredients = seps[3];
+            input.NumberOfPhotos = numberOfPhotos;
 
-            var numRows = structure.Rows = seps[0];
-            var numColumns = structure.Columns = seps[1];
+            for (int i = 0; i < otherLines.Count; i++)
+            {
 
-            //structure.Sections = new List<List<PizzaSection>>(numRows);
+            }
 
-            //for (int i = 0; i < numRows; i++)
-            //{
-            //    structure.Sections.Add(ParseLine(i, otherLines[i], numColumns));
-            //}
-
-            return structure;
+            return input;
         }
 
         public static void ParseLine(int curLine, string line, int numColumns)

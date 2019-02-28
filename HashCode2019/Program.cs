@@ -16,7 +16,7 @@ namespace HashCode2019
 
         private static string currentFile = Example;
 
-        public static Structure curStructure = new Structure();
+        public static InputReading curStructure = new InputReading();
 
         static void Main(string[] args)
         {

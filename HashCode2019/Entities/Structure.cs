@@ -5,11 +5,10 @@ using System.Text;
 namespace HashCode2019.Entities
 {
     [Serializable]
-    public class Structure
+    public class InputReading
     {
-        public int Rows { get; set; }
-        public int Columns { get; set; }
+        public int NumberOfPhotos { get; set; }
 
-
+        public List<Photo> Photos { get; set; }
     }
 }
