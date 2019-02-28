@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Linq;
+using HashCode2019.Inputs;
+using HashCode2019.Logic;
 
 namespace HashCode2019
 {
@@ -16,17 +18,21 @@ namespace HashCode2019
         {
             // C:\Users\kvnna\Source\Repos\Hash-Code-2019\HashCode2019\c_memorable_moments.txt
             string allFile = FileReader.ReadFile(@"C:\Users\kvnna\Source\Repos\Hash-Code-2019\HashCode2019\c_memorable_moments.txt");
-
             var firstLine = FileReader.GetFirstLine(allFile);
             List<string> otherLines = FileReader.GetOtherLines(allFile);
             curStructure = Parser.ParseAll(firstLine, otherLines);
 
-            PrintOutput(null);
+            ISlideGenerator generator = new ProbabilisticSlideGenerator();
 
+            var slideshow = generator.generateSlide(curStructure.Photos);
+
+            var score = Score.ComputeScore(slideshow);
+
+            PrintOutput(slideshow);
             Console.ReadKey();
         }
 
-        public static void PrintOutput(List<SlideShow> slideshows)
+        public static void PrintOutput(List<Slide> slideshows)
         {
             using (StreamWriter outputFile = new StreamWriter("Output.txt"))
             {
