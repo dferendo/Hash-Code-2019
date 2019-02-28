@@ -18,30 +18,32 @@ namespace HashCode2019.Reader
 
             for (int i = 0; i < otherLines.Count; i++)
             {
+                List<string> photoData = otherLines[i].Split(' ').ToList();
 
+                string orientationString = photoData[0];
+                int numberOfTags = Int32.Parse(photoData[1]);
+                Orientation orientation;
+
+                if (orientationString.Equals('H'))
+                {
+                    orientation = Orientation.Horizontal;
+                } else
+                {
+                    orientation = Orientation.Vertical;
+                }
+
+                photoData.RemoveAt(0);
+                photoData.RemoveAt(0);
+
+                input.Photos.Add(new Photo()
+                {
+                    PhotoID = i,
+                    Orientation = orientation,
+                    Tags = photoData
+                });
             }
 
             return input;
-        }
-
-        public static void ParseLine(int curLine, string line, int numColumns)
-        {
-            //var result = new List<PizzaSection>(numColumns);
-            //List<char> seps = line.ToCharArray().ToList();
-            //for (int j = 0; j < numColumns; j++)
-            //{
-            //    switch (seps[j])
-            //    {
-            //        case 'T':
-            //            result.Add(new PizzaSection(curLine, j, Ingredient.Tomato));
-            //            break;
-            //        case 'M':
-            //            result.Add(new PizzaSection(curLine, j, Ingredient.Mushroom));
-            //            break;
-            //    }
-            //}
-
-            //return result;
         }
 
     }

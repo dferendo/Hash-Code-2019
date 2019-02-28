@@ -9,7 +9,7 @@ namespace HashCode2019
 {
     class Program
     {
-        public const string Example = "a_example.in";
+        public const string Example = "c_memorable_moments.txt";
         public const string Small = "b_small.in";
         public const string Medium = "c_medium.in";
         public const string Big = "d_big.in";
@@ -20,7 +20,7 @@ namespace HashCode2019
 
         static void Main(string[] args)
         {
-            string allFile = FileReader.ReadFile(currentFile);
+            string allFile = FileReader.ReadFile(@"C:\tree-personal\Hash-Code-2019\HashCode2019\c_memorable_moments.txt");
 
             var firstLine = FileReader.GetFirstLine(allFile);
             List<string> otherLines = FileReader.GetOtherLines(allFile);

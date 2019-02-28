@@ -16,6 +16,6 @@ namespace HashCode2019.Entities
 
         public Orientation Orientation { get; set; }
 
-        public List<int> Tags { get; set; }
+        public List<string> Tags { get; set; }
     }
 }
