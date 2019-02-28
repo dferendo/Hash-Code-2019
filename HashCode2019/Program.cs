@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Linq;
 
 namespace HashCode2019
 {
@@ -19,11 +20,21 @@ namespace HashCode2019
             List<string> otherLines = FileReader.GetOtherLines(allFile);
             curStructure = Parser.ParseAll(firstLine, otherLines);
 
-            //Code
-
-            StringBuilder builder = new StringBuilder();
+            PrintOutput(null);
 
             Console.ReadKey();
+        }
+
+        public static void PrintOutput(List<SlideShow> slideshows)
+        {
+            using (StreamWriter outputFile = new StreamWriter("Output.txt"))
+            {
+                outputFile.WriteLine(slideshows.Count);
+
+                foreach (var slide in slideshows)
+                    outputFile.WriteLine(string.Join(' ', slide.Photos.Select(x => x.PhotoID)));
+            }
+
         }
     }
 }
