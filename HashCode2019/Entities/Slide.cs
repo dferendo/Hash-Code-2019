@@ -4,7 +4,7 @@ using System.Text;
 
 namespace HashCode2019.Entities
 {
-    public class SlideShow
+    public class Slide
     {
         public List<Photo> Photos { get; set; }
     }

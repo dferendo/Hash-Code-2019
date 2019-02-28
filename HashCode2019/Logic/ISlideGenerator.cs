@@ -5,6 +5,6 @@ namespace HashCode2019.Logic
 {
     interface ISlideGenerator
     {
-        List<SlideShow> generateSlide(List<Photo> photos);
+        List<Slide> generateSlide(List<Photo> photos);
     }
 }

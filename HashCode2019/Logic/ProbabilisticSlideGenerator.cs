@@ -7,9 +7,9 @@ namespace HashCode2019.Logic
 {
     public class ProbabilisticSlideGenerator : ISlideGenerator
     {
-        public List<SlideShow> generateSlide(List<Photo> photos)
+        public List<Slide> generateSlide(List<Photo> photos)
         {
-            var output = new List<SlideShow>();
+            var output = new List<Slide>();
 
 
 
