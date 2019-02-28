@@ -9,13 +9,6 @@ namespace HashCode2019
 {
     class Program
     {
-        public const string Example = "c_memorable_moments.txt";
-        public const string Small = "b_small.in";
-        public const string Medium = "c_medium.in";
-        public const string Big = "d_big.in";
-
-        private static string currentFile = Example;
-
         public static InputReading curStructure = new InputReading();
 
         static void Main(string[] args)
@@ -29,16 +22,6 @@ namespace HashCode2019
             //Code
 
             StringBuilder builder = new StringBuilder();
-
-            //fill builder
-
-            Console.WriteLine("\r");
-
-
-            Console.WriteLine("X");
-            Console.WriteLine("Y");
-            Console.WriteLine("Finished calculation for " + currentFile);
-            File.WriteAllText("result-" + currentFile + ".txt", builder.ToString());
 
             Console.ReadKey();
         }

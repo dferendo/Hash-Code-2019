@@ -24,7 +24,7 @@ namespace HashCode2019.Reader
                 int numberOfTags = Int32.Parse(photoData[1]);
                 Orientation orientation;
 
-                if (orientationString.Equals('H'))
+                if (orientationString.Equals("H"))
                 {
                     orientation = Orientation.Horizontal;
                 } else
