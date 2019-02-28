@@ -9,7 +9,11 @@ namespace HashCode2019.Logic
     {
         public List<SlideShow> generateSlide(List<Photo> photos)
         {
-            throw new NotImplementedException();
+            var output = new List<SlideShow>();
+
+
+
+            return output;
         }
     }
 }
