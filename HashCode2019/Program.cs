@@ -13,7 +13,8 @@ namespace HashCode2019
 
         static void Main(string[] args)
         {
-            string allFile = FileReader.ReadFile(@"C:\tree-personal\Hash-Code-2019\HashCode2019\c_memorable_moments.txt");
+            // C:\Users\kvnna\Source\Repos\Hash-Code-2019\HashCode2019\c_memorable_moments.txt
+            string allFile = FileReader.ReadFile(@"C:\Users\kvnna\Source\Repos\Hash-Code-2019\HashCode2019\c_memorable_moments.txt");
 
             var firstLine = FileReader.GetFirstLine(allFile);
             List<string> otherLines = FileReader.GetOtherLines(allFile);
