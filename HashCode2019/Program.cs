@@ -17,7 +17,7 @@ namespace HashCode2019
         static void Main(string[] args)
         {
             // C:\Users\kvnna\Source\Repos\Hash-Code-2019\HashCode2019\c_memorable_moments.txt
-            string allFile = FileReader.ReadFile(@"C:\Users\kvnna\Source\Repos\Hash-Code-2019\HashCode2019\c_memorable_moments.txt");
+            string allFile = FileReader.ReadFile(@"C:\Users\kvnna\Source\Repos\Hash-Code-2019\HashCode2019\Inputs\d_pet_pictures.txt");
             var firstLine = FileReader.GetFirstLine(allFile);
             List<string> otherLines = FileReader.GetOtherLines(allFile);
             curStructure = Parser.ParseAll(firstLine, otherLines);

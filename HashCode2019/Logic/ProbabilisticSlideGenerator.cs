@@ -8,6 +8,23 @@ namespace HashCode2019.Logic
 {
     public class ProbabilisticSlideGenerator : ISlideGenerator
     {
+
+        static long LongRandom(long min, long max, Random rand)
+        {
+            long result = rand.Next((Int32)(min >> 32), (Int32)(max >> 32));
+            result = (result << 32);
+            result = result | (long)rand.Next((Int32)min, (Int32)max);
+            return result;
+        }
+
+        static int weightedRand(Random r, int a) {
+            var n = (long)a;
+            var sum =  LongRandom(0, (n * (n + 1)) / 2, r);
+            return (int)((Math.Sqrt(1 + 8 * sum) - 1) / 2);
+        }
+
+        
+
         static Slide generateSingleSlide(List<Photo> horizontal, List<Photo> vertical, bool remove)
         {
             // Choose random photo
@@ -33,7 +50,7 @@ namespace HashCode2019.Logic
             if (c == Orientation.Horizontal)
             {
 
-                var horPhoto = r.Next(horizontal.Count);
+                var horPhoto = weightedRand(r, horizontal.Count);
                 var photo = horizontal[horPhoto];
                 if (remove)
                 {
@@ -45,14 +62,14 @@ namespace HashCode2019.Logic
             }
             else
             {
-                var verPhoto = r.Next(vertical.Count);
+                var verPhoto = weightedRand(r, vertical.Count);
                 var photo1 = vertical[verPhoto];
                 if (remove)
                 {
                     vertical.RemoveAt(verPhoto);
                 }
 
-                verPhoto = r.Next(vertical.Count);
+                verPhoto = weightedRand(r, vertical.Count);
                 var photo2 = vertical[verPhoto];
                 if (remove)
                 {
@@ -73,6 +90,8 @@ namespace HashCode2019.Logic
 
             var horizontal = photos.Where(p => p.Orientation == Orientation.Horizontal).ToList();
             var vertical = photos.Where(p => p.Orientation == Orientation.Vertical).ToList();
+            horizontal = horizontal.OrderBy(p => p.Tags.Count).ToList();
+            vertical = vertical.OrderBy(p => p.Tags.Count).ToList();
 
             var slide1 = generateSingleSlide(horizontal, vertical, true);
             Slide slide2 = generateSingleSlide(horizontal, vertical, false);
@@ -84,7 +103,7 @@ namespace HashCode2019.Logic
                 Slide bestSlide = null;
                 var bestScore = 0;
 
-                for (int s = 0; s < 500; ++s)
+                for (int s = 0; s < 1; ++s)
                 {
                     var slide2Score = Score.ComputeScore(slide1, slide2);
                     if (slide2Score >= bestScore)
